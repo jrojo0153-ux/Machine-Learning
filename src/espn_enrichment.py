@@ -1,6 +1,7 @@
 import pandas as pd
 import requests
 import time
+import os
 from datetime import datetime
 
 BASE_URL = "https://site.api.espn.com/apis/site/v2/sports/soccer"
@@ -87,6 +88,7 @@ def load_matches():
 
 
 def save_enriched(df):
+    os.makedirs("data/processed", exist_ok=True)
     df.to_parquet(OUTPUT_PATH, index=False)
 
 
